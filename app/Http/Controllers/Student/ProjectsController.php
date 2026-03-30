@@ -40,7 +40,7 @@ class ProjectsController extends Controller
             'description' => 'required|string',
             'url' => 'nullable|url',
             'technologies' => 'nullable|string',
-            'status' => 'required|in:draft,in-progress,completed',
+            'status' => 'required|in:draft,in_progress,completed',
         ]);
 
         $technologies = $request->technologies 
@@ -89,16 +89,12 @@ class ProjectsController extends Controller
      * Update project
      */
     public function update(Request $request, Project $project)
-    {
-        // Ensure user owns this project
-        $this->authorize('update', $project);
-
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'url' => 'nullable|url',
             'technologies' => 'nullable|string',
-            'status' => 'required|in:draft,in-progress,completed',
+            'status' => 'required|in:draft,in_progress,completed',
         ]);
 
         $technologies = $request->technologies 
