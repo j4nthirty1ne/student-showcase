@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+<<<<<<< HEAD
 // Home page (public)
 Route::get('/', function () {
     return view('public.home');
@@ -24,3 +25,8 @@ Route::get('/students/{id}', function () {
 require __DIR__ . '/auth.php';
 require __DIR__ . '/student.php';
 require __DIR__ . '/admin.php';
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+>>>>>>> main
