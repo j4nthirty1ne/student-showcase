@@ -1,29 +1,8 @@
 {
-<<<<<<< HEAD
-    "name": "student/showcase",
-    "description": "Student Project Showcase Application",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Your Team",
-            "email": "team@example.com"
-        }
-    ],
-    "require": {
-        "php": "^8.1",
-        "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.8"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^10.1",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.26"
-=======
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "student/showcase",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Student Project Showcase Application",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
@@ -39,7 +18,6 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
         "phpunit/phpunit": "^11.5.50"
->>>>>>> main
     },
     "autoload": {
         "psr-4": {
@@ -54,54 +32,18 @@
         }
     },
     "scripts": {
-<<<<<<< HEAD
-=======
-        "setup": [
-            "composer install",
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php artisan key:generate",
-            "@php artisan migrate --force",
-            "npm install",
-            "npm run build"
-        ],
-        "dev": [
-            "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
-        ],
-        "test": [
-            "@php artisan config:clear --ansi",
-            "@php artisan test"
-        ],
->>>>>>> main
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
-<<<<<<< HEAD
-=======
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
->>>>>>> main
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-<<<<<<< HEAD
             "@php artisan key:generate --ansi"
-        ]
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true,
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    }
-=======
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
@@ -123,5 +65,4 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
->>>>>>> main
 }
