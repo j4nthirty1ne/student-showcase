@@ -1,1 +1,1 @@
-// Main application script
+import './bootstrap';
