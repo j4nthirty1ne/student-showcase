@@ -89,6 +89,10 @@ class ProjectsController extends Controller
      * Update project
      */
     public function update(Request $request, Project $project)
+    {
+        // Ensure user owns this project
+        $this->authorize('update', $project);
+
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
