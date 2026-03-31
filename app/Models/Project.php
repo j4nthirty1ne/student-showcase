@@ -11,6 +11,8 @@ class Project extends Model
         'title',
         'description',
         'url',
+        'github_link',
+        'cover_image',
         'technologies',
         'images',
         'status',
@@ -24,5 +26,10 @@ class Project extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function projectImages()
+    {
+        return $this->hasMany(ProjectImage::class);
     }
 }
