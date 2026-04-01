@@ -21,11 +21,14 @@ return new class extends Migration
             $table->string('short_description', 255)->nullable();
             $table->text('description');
 
+            $table->string('url')->nullable();
+            $table->json('technologies')->nullable();
+            $table->json('images')->nullable();
             $table->string('github_link')->nullable();
             $table->string('demo_link')->nullable();
             $table->string('cover_image')->nullable();
 
-            $table->enum('status', ['draft', 'published'])->default('published')->index('idx_projects_status');
+            $table->enum('status', ['draft', 'in_progress', 'completed', 'published'])->default('draft')->index('idx_projects_status');
             $table->boolean('featured')->default(false)->index('idx_projects_featured');
 
             $table->timestamp('published_at')->nullable();

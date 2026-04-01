@@ -28,7 +28,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'role' => 'student', // Default role
-            'status' => 'active',
+            'is_active' => true,
         ]);
 
         // Create associated profile
