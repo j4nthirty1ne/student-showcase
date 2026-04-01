@@ -67,7 +67,7 @@ class User extends Authenticatable
      */
     public function isActive(): bool
     {
-        return $this->status === 'active';
+        return $this->is_active === true;
     }
 
     /**
@@ -75,7 +75,7 @@ class User extends Authenticatable
      */
     public function scopeActive($query)
     {
-        return $query->where('status', 'active');
+        return $query->where('is_active', true);
     }
 
     /**
