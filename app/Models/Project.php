@@ -33,6 +33,11 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class, 'project_technology');
+    }
+
     public function projectImages()
     {
         return $this->hasMany(ProjectImage::class);
