@@ -1,20 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShowcaseController;
 
-// Root route - redirect or show dashboard
-Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect('/student/dashboard');
-    }
-    return redirect('/login');
-})->name('home');
+// Public Showcase Route
+Route::get('/', [ShowcaseController::class, 'index'])->name('home');
+Route::get('/projects/{project}', [ShowcaseController::class, 'show'])->name('project.show');
 
 // Authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Student routes (authenticated users)
-require __DIR__.'/student.php';
+require __DIR__ . '/student.php';
 
 // Admin routes (authenticated + admin users only)
-require __DIR__.'/admin.php';
+require __DIR__ . '/admin.php';

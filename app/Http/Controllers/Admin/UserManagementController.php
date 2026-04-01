@@ -27,8 +27,9 @@ class UserManagementController extends Controller
         }
 
         // Filter by status
-        if ($request->status) {
-            $query->where('status', $request->status);
+        if ($request->filled('status')) {
+            $isActive = $request->status === 'active';
+            $query->where('is_active', $isActive);
         }
 
         $users = $query->paginate(10);
