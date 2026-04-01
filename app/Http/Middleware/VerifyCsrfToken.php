@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class VerifyCsrfToken
 {
     protected $except = [
-        // 'api/*',
+        'api/*',
+        'register',
+        'login',
     ];
 
     public function handle(Request $request, Closure $next)
