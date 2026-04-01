@@ -13,7 +13,64 @@
                     Discover the amazing projects created by our talented students.
                 </p>
             </div>
+            <!-- Search and Filter Form -->
+            <div class="mb-12">
+                <form action="{{ route('home') }}" method="GET"
+                    class="flex flex-col md:flex-row gap-4 items-end justify-between bg-white p-6 md:p-4 rounded-xl border border-neutral-200 shadow-sm">
+                    <div class="w-full md:w-1/3">
+                        <label for="search"
+                            class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Search</label>
+                        <input type="text" name="search" id="search" value="{{ request('search') }}"
+                            placeholder="Title or Student Name"
+                            class="w-full p-3 border border-gray-300 rounded-md focus:ring-black focus:border-black transition-colors bg-gray-50 hover:bg-white text-sm">
+                    </div>
 
+                    <div class="w-full md:w-1/4">
+                        <label for="category"
+                            class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Category</label>
+                        <select name="category" id="category"
+                            class="w-full p-3 border border-gray-300 rounded-md focus:ring-black focus:border-black transition-colors bg-gray-50 hover:bg-white text-sm">
+                            <option value="">All Categories</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->slug }}"
+                                    {{ request('category') === $cat->slug ? 'selected' : '' }}>
+                                    {{ $cat->name }}
+                                </option>
+                            @endforeach
+                            <option value="uncategorized" {{ request('category') === 'uncategorized' ? 'selected' : '' }}>
+                                Uncategorized</option>
+                        </select>
+                    </div>
+
+                    <div class="w-full md:w-1/4">
+                        <label for="technology"
+                            class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Technology</label>
+                        <select name="technology" id="technology"
+                            class="w-full p-3 border border-gray-300 rounded-md focus:ring-black focus:border-black transition-colors bg-gray-50 hover:bg-white text-sm">
+                            <option value="">All Technologies</option>
+                            @foreach ($allTechnologies as $tech)
+                                <option value="{{ $tech->id }}"
+                                    {{ request('technology') == $tech->id ? 'selected' : '' }}>
+                                    {{ $tech->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="w-full md:w-auto flex gap-2">
+                        <button type="submit"
+                            class="w-full md:w-auto px-6 py-3 bg-black text-white font-bold uppercase tracking-wider text-xs rounded-md hover:bg-neutral-800 transition-colors">
+                            Filter
+                        </button>
+                        @if (request()->hasAny(['search', 'category', 'technology']))
+                            <a href="{{ route('home') }}"
+                                class="w-full md:w-auto px-4 py-3 bg-gray-100 text-gray-600 font-bold uppercase tracking-wider text-xs rounded-md hover:bg-gray-200 transition-colors text-center border border-gray-200">
+                                Clear
+                            </a>
+                        @endif
+                    </div>
+                </form>
+            </div>
             @if ($projects->isEmpty())
                 <div class="text-center py-20 bg-white shadow-sm rounded-lg border border-gray-200">
                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
