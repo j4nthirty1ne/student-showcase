@@ -13,8 +13,27 @@ class ShowcaseController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Project::with('category', 'user')
+        $baseQuery = Project::with('category', 'user')
             ->whereIn('status', ['published', 'completed']);
+
+        // ── Featured projects for hero slider (latest 5, no filters) ──
+        $featuredProjects = (clone $baseQuery)
+            ->orderByRaw('COALESCE(published_at, created_at) DESC')
+            ->limit(5)
+            ->get();
+
+        // ── Stats ──
+        $totalProjects  = Project::whereIn('status', ['published', 'completed'])->count();
+        $totalStudents  = \App\Models\User::where('role', '!=', 'admin')->count();
+        $totalCategories = Category::count();
+
+        // ── Latest projects for "Recent Work" strip (latest 4) ──
+        $recentProjects = (clone $baseQuery)
+            ->orderByRaw('COALESCE(published_at, created_at) DESC')
+            ->limit(4)
+            ->get();
+
+        $query = clone $baseQuery;
 
         // Search by keyword (Project title or Student name)
         if ($request->filled('search')) {
@@ -45,7 +64,6 @@ class ShowcaseController extends Controller
             $technologyId = $request->query('technology');
             $technology = \App\Models\Technology::find($technologyId);
             if ($technology) {
-                // Search the JSON column for the name of the admin-defined technology
                 $query->whereJsonContains('technologies', $technology->name);
             }
         }
@@ -55,11 +73,13 @@ class ShowcaseController extends Controller
             ->withQueryString();
 
         $categories = Category::orderBy('name')->get();
-
-        // Get technologies managed by admin (from the database table)
         $allTechnologies = \App\Models\Technology::orderBy('name')->get();
 
-        return view('public.showcase', compact('projects', 'categories', 'allTechnologies'));
+        return view('public.showcase', compact(
+            'projects', 'categories', 'allTechnologies',
+            'featuredProjects', 'recentProjects',
+            'totalProjects', 'totalStudents', 'totalCategories'
+        ));
     }
 
     /**
