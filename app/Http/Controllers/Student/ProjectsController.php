@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -17,6 +18,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         $projects = $user->projects()->latest()->paginate(10);
 
@@ -30,7 +32,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('student.projects.create');
+        $categories = Category::all();
+        return view('student.projects.create', compact('categories'));
     }
 
     /**
@@ -47,7 +50,9 @@ class ProjectsController extends Controller
             $coverImagePath = $request->file('cover_image')->store('projects', 'public');
         }
 
-        $project = Auth::user()->projects()->create([
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        $project = $user->projects()->create([
             'title' => $request->title,
             'description' => $request->description,
             'url' => $request->url,
@@ -91,9 +96,8 @@ class ProjectsController extends Controller
         // Ensure user owns this project
         $this->authorize('update', $project);
 
-        return view('student.projects.edit', [
-            'project' => $project,
-        ]);
+        $categories = Category::all();
+        return view('student.projects.edit', compact('project', 'categories'));
     }
 
     /**
