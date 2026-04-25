@@ -24,28 +24,28 @@
     </script>
 
     <style>
-        html.light body { background-color: #f0f7f6; }
-        html.dark  body { background-color: #040d12; }
+        html.light body { background-color: #f0fdfa; }
+        html.dark  body { background-color: #0e0b1a; }
     </style>
 </head>
 
 {{-- Body inherits only font & transition; bg set above by JS-class ──────────────────── --}}
 <body class="font-sans antialiased min-h-screen relative overflow-x-hidden transition-colors duration-500">
 
-    {{-- ───────── LIGHT BACKGROUND CANVAS ──────────────────────────────────────────────── --}}
+    {{-- ───────── LIGHT BACKGROUND CANVAS (soft teal) ────────────────────────── --}}
     <div class="light-only fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div class="absolute inset-0" style="background:#f0f7f6;"></div>
-        <div class="absolute top-[-5%]  left-[-5%]  w-[50vw] h-[50vw] rounded-full blur-[120px]" style="background:rgba(13,148,136,.12);"></div>
-        <div class="absolute bottom-[0%]  right-[-5%] w-[40vw] h-[40vw] rounded-full blur-[100px]" style="background:rgba(8,145,178,.08);"></div>
-        <div class="absolute top-[40%]  left-[30%]  w-[30vw] h-[30vw] rounded-full blur-[80px]"  style="background:rgba(15,118,110,.07);"></div>
+        <div class="absolute inset-0" style="background:#f0fdfa;"></div>
+        <div class="absolute top-[-10%] left-[-8%]  w-[55vw] h-[55vw] rounded-full blur-[130px]" style="background:rgba(13,148,136,.12);"></div>
+        <div class="absolute bottom-[-5%] right-[-8%] w-[45vw] h-[45vw] rounded-full blur-[110px]" style="background:rgba(8,145,178,.09);"></div>
+        <div class="absolute top-[35%]  left-[28%]  w-[35vw] h-[35vw] rounded-full blur-[90px]"  style="background:rgba(45,212,191,.06);"></div>
     </div>
 
-    {{-- ───────── DARK BACKGROUND CANVAS ───────────────────────────────────────────────── --}}
+    {{-- ───────── DARK BACKGROUND CANVAS (deep space violet) ────────────────────────────── --}}
     <div class="dark-only fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div class="absolute inset-0" style="background:#040d12;"></div>
-        <div class="absolute top-[-5%]  left-[-5%]  w-[55vw] h-[55vw] rounded-full blur-[130px]" style="background:rgba(13,148,136,.1);"></div>
-        <div class="absolute bottom-[0%]  right-[-5%] w-[45vw] h-[45vw] rounded-full blur-[110px]" style="background:rgba(8,145,178,.07);"></div>
-        <div class="absolute top-[35%]  left-[25%]  w-[30vw] h-[30vw] rounded-full blur-[90px]"  style="background:rgba(15,118,110,.08);"></div>
+        <div class="absolute inset-0" style="background:#0e0b1a;"></div>
+        <div class="absolute top-[-5%]  left-[-5%]  w-[55vw] h-[55vw] rounded-full blur-[130px]" style="background:rgba(124,58,237,.15);"></div>
+        <div class="absolute bottom-[0%]  right-[-5%] w-[45vw] h-[45vw] rounded-full blur-[110px]" style="background:rgba(59,130,246,.10);"></div>
+        <div class="absolute top-[35%]  left-[25%]  w-[30vw] h-[30vw] rounded-full blur-[90px]"  style="background:rgba(167,139,250,.08);"></div>
     </div>
 
     <div id="app" class="relative z-10">

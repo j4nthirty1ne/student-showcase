@@ -1,94 +1,135 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Admin Dashboard — Student Showcase')
 
 @section('admin-content')
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-8">Admin Dashboard</h1>
+<div class="ad-wrap min-h-screen py-12 px-6">
+<div class="max-w-6xl mx-auto">
 
-    <!-- Statistics Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Total Users -->
-        <div class="bg-white shadow rounded-lg p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M19 12a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </div>
-                <div class="ml-5">
-                    <p class="text-gray-500 text-sm font-medium">Total Users</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $totalUsers }}</p>
-                </div>
+    {{-- ── Header ──────────────────────────────────────────── --}}
+    <div class="mb-10">
+        <p class="text-xs font-black uppercase tracking-widest mb-2" style="color:#2dd4bf;">Admin Panel</p>
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight mb-2 ad-heading">Dashboard</h1>
+        <p class="text-sm font-medium ad-muted">System overview and quick actions.</p>
+    </div>
+
+    {{-- ── Stats grid ───────────────────────────────────────── --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+
+        {{-- Total Users --}}
+        <div class="ad-card rounded-2xl p-6 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                 style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);">
+                <i data-lucide="users" class="w-5 h-5" style="color:#2dd4bf;"></i>
+            </div>
+            <div>
+                <p class="text-2xl font-black ad-heading">{{ $totalUsers }}</p>
+                <p class="text-xs font-bold uppercase tracking-widest ad-muted">Total Users</p>
             </div>
         </div>
 
-        <!-- Total Students -->
-        <div class="bg-white shadow rounded-lg p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
-                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
-                    </svg>
-                </div>
-                <div class="ml-5">
-                    <p class="text-gray-500 text-sm font-medium">Total Students</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $totalStudents }}</p>
-                </div>
+        {{-- Total Students --}}
+        <div class="ad-card rounded-2xl p-6 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                 style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);">
+                <i data-lucide="graduation-cap" class="w-5 h-5" style="color:#4ade80;"></i>
+            </div>
+            <div>
+                <p class="text-2xl font-black ad-heading">{{ $totalStudents }}</p>
+                <p class="text-xs font-bold uppercase tracking-widest ad-muted">Students</p>
             </div>
         </div>
 
-        <!-- Total Admins -->
-        <div class="bg-white shadow rounded-lg p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 bg-purple-500 rounded-md p-3">
-                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </div>
-                <div class="ml-5">
-                    <p class="text-gray-500 text-sm font-medium">Total Admins</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $totalAdmins }}</p>
-                </div>
+        {{-- Total Admins --}}
+        <div class="ad-card rounded-2xl p-6 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                 style="background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.2);">
+                <i data-lucide="shield-check" class="w-5 h-5" style="color:#a78bfa;"></i>
+            </div>
+            <div>
+                <p class="text-2xl font-black ad-heading">{{ $totalAdmins }}</p>
+                <p class="text-xs font-bold uppercase tracking-widest ad-muted">Admins</p>
             </div>
         </div>
 
-        <!-- Active Users -->
-        <div class="bg-white shadow rounded-lg p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
-                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <div class="ml-5">
-                    <p class="text-gray-500 text-sm font-medium">Active Users</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $activeUsers }}</p>
-                </div>
+        {{-- Active Users --}}
+        <div class="ad-card rounded-2xl p-6 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                 style="background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);">
+                <i data-lucide="activity" class="w-5 h-5" style="color:#fbbf24;"></i>
+            </div>
+            <div>
+                <p class="text-2xl font-black ad-heading">{{ $activeUsers }}</p>
+                <p class="text-xs font-bold uppercase tracking-widest ad-muted">Active</p>
             </div>
         </div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="bg-white shadow rounded-lg p-6 mb-8">
-        <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
-        <div class="flex gap-4">
-            <a href="{{ route('admin.users.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-                View All Users
+    {{-- ── Quick actions ────────────────────────────────────── --}}
+    <div class="ad-card rounded-2xl p-6 mb-8">
+        <h2 class="text-base font-black ad-heading mb-5">Quick Actions</h2>
+        <div class="flex flex-wrap gap-3">
+            <a href="{{ route('admin.users.index') }}"
+               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.03]"
+               style="background:linear-gradient(135deg,#0d9488,#0f766e);color:#fff;box-shadow:0 4px 16px rgba(13,148,136,.3);">
+                <i data-lucide="users" class="w-4 h-4"></i> Manage Users
             </a>
-            <a href="#" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">
-                View Projects
+            <a href="{{ route('admin.projects.index') }}"
+               class="ad-btn-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.03]">
+                <i data-lucide="folder-open" class="w-4 h-4"></i> View Projects
             </a>
-            <a href="#" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded">
-                View Categories
+            <a href="{{ route('admin.categories.index') }}"
+               class="ad-btn-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.03]">
+                <i data-lucide="tag" class="w-4 h-4"></i> Categories
             </a>
         </div>
     </div>
 
-    <!-- Recent Activity -->
-    <div class="bg-white shadow rounded-lg p-6">
-        <h2 class="text-xl font-bold mb-4">System Status</h2>
-        <p class="text-gray-600">✓ All systems operational</p>
+    {{-- ── System status ────────────────────────────────────── --}}
+    <div class="ad-card rounded-2xl p-6">
+        <h2 class="text-base font-black ad-heading mb-5">System Status</h2>
+        <div class="flex items-center gap-3">
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#4ade80;box-shadow:0 0 8px #4ade80;"></div>
+            <p class="text-sm font-bold ad-heading">All systems operational</p>
+        </div>
     </div>
+
 </div>
+</div>
+
+<style>
+    /* ── Cards ─────────────────────────────────────────────── */
+    .ad-card {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.1);
+        backdrop-filter: blur(12px);
+    }
+
+    /* ── Typography ─────────────────────────────────────────── */
+    .ad-heading { color: #ffffff; }
+    .ad-muted   { color: rgba(148,163,184,.7); }
+
+    /* ── Ghost button ───────────────────────────────────────── */
+    .ad-btn-ghost {
+        background: rgba(255,255,255,.06);
+        color: rgba(255,255,255,.7);
+        border: 1px solid rgba(255,255,255,.1);
+    }
+    .ad-btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+    /* ══ LIGHT MODE ════════════════════════════════════════════ */
+    html.light .ad-card {
+        background: rgba(255,255,255,.85);
+        border-color: rgba(13,148,136,.12);
+        box-shadow: 0 4px 20px rgba(13,148,136,.07);
+    }
+    html.light .ad-heading { color: #0c2926; }
+    html.light .ad-muted   { color: #64748b; }
+    html.light .ad-btn-ghost {
+        background: rgba(13,148,136,.07);
+        color: #0f766e;
+        border-color: rgba(13,148,136,.2);
+    }
+    html.light .ad-btn-ghost:hover { background: rgba(13,148,136,.14); color: #0d9488; }
+</style>
 @endsection

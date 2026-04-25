@@ -661,48 +661,47 @@
     .ss-btn-outline:hover { transform: translateY(-2px); background:rgba(255,255,255,.12) !important; }
 
     /* ══ PAGE WRAPPER ══════════════════════════════════════ */
-    .ss-page-wrap               { background:#040d12; }
-    html.light .ss-page-wrap   { background:#edf7f5; }
+    .ss-page-wrap               { background:#0e0b1a; }
+    html.light .ss-page-wrap   { background:#f0fdfa; }
 
     /* ══ HERO & DASHBOARD (dark by default) ════════════════ */
     .ss-hero-section,
-    .ss-dashboard-section { background:#030d12; }
+    .ss-dashboard-section { background:#0a071a; }
 
     /* ── Hero light ─────────────────────────────────────── */
     html.light .ss-hero-section {
-        background: linear-gradient(145deg,#eaf8f5 0%,#d4f4ec 50%,#ddeeff 100%);
+        background: linear-gradient(145deg,#f0fdfa 0%,#ccfbf1 50%,#e0f2fe 100%);
     }
     html.light .ss-hero-section h1                            { color:#0c2926 !important; text-shadow:none !important; }
     html.light .ss-hero-section p[style*="rgba(255,255,255"]  { color:#475569 !important; }
-    html.light .ss-hero-section .ss-btn-outline               { border-color:rgba(13,148,136,.35) !important; color:#0f2b28 !important; background:rgba(13,148,136,.08) !important; }
+    html.light .ss-hero-section .ss-btn-outline               { border-color:rgba(13,148,136,.35) !important; color:#0f766e !important; background:rgba(13,148,136,.08) !important; }
     html.light .ss-hero-section .absolute > div[style*="gradient"] { opacity:0 !important; }
-    html.light .ss-hero-section .absolute > img               { opacity:.06 !important; }
-    html.light .ss-hero-section .ss-orb                       { opacity:.3 !important; }
-    /* slide category badge border in light */
-    html.light .ss-hero-section span[style*="rgba(13,148,136,.15)"] { background:rgba(13,148,136,.12) !important; }
+    html.light .ss-hero-section .absolute > img               { opacity:.05 !important; }
+    html.light .ss-hero-section .ss-orb                       { opacity:.35 !important; }
+    html.light .ss-hero-section span[style*="rgba(13,148,136,.15)"] { background:rgba(13,148,136,.12) !important; border-color:rgba(13,148,136,.35) !important; color:#0d9488 !important; }
 
     /* ── Dashboard light ───────────────────────────────── */
     html.light .ss-dashboard-section {
-        background: linear-gradient(145deg,#eaf8f5 0%,#d4f4ec 50%,#ddeeff 100%);
+        background: linear-gradient(145deg,#f0fdfa 0%,#ccfbf1 50%,#e0f2fe 100%);
     }
     html.light .ss-dashboard-section h1                           { color:#0c2926 !important; text-shadow:none !important; }
-    html.light .ss-dashboard-badge                               { color:#0b524e !important; border-color:rgba(13,148,136,.6) !important; background:rgba(13,148,136,.12) !important; }
+    html.light .ss-dashboard-badge                               { color:#0b524e !important; border-color:rgba(13,148,136,.5) !important; background:rgba(13,148,136,.12) !important; }
     html.light .ss-dashboard-section .text-white                  { color:#0c2926 !important; }
     html.light .ss-dashboard-section p[style*="rgba(255,255,255"] { color:#475569 !important; }
     html.light .ss-dashboard-section span[style*="rgba(255,255,255"] { color:#64748b !important; }
-    html.light .ss-dashboard-section .ss-btn-outline              { border-color:rgba(13,148,136,.35) !important; color:#0f2b28 !important; background:rgba(13,148,136,.08) !important; }
+    html.light .ss-dashboard-section .ss-btn-outline              { border-color:rgba(13,148,136,.35) !important; color:#0f766e !important; background:rgba(13,148,136,.08) !important; }
     /* stat cards */
     html.light .ss-dashboard-section .rounded-2xl[style*="rgba(10,15,46"] {
-        background:rgba(255,255,255,.88) !important;
-        border-color:rgba(13,148,136,.18) !important;
-        box-shadow:0 4px 20px rgba(13,148,136,.08) !important;
+        background:rgba(255,255,255,.85) !important;
+        border-color:rgba(13,148,136,.15) !important;
+        box-shadow:0 4px 20px rgba(13,148,136,.07) !important;
     }
     html.light .ss-dashboard-section i[data-lucide="folder"]         { color:#0d9488 !important; }
     html.light .ss-dashboard-section i[data-lucide="check-circle-2"] { color:#059669 !important; }
     html.light .ss-dashboard-section i[data-lucide="clock"]          { color:#d97706 !important; }
     html.light .ss-dashboard-section .absolute > div[style*="gradient"] { opacity:0 !important; }
-    html.light .ss-dashboard-section .absolute > img           { opacity:.05 !important; }
-    html.light .ss-dashboard-section .ss-orb                  { opacity:.25 !important; }
+    html.light .ss-dashboard-section .absolute > img           { opacity:.04 !important; }
+    html.light .ss-dashboard-section .ss-orb                  { opacity:.3 !important; }
 
     /* ══ STATS BAR (#stats) ════════════════════════════════ */
     html.light #stats .grid > div {
@@ -719,11 +718,11 @@
     html.light #ss-recent h3.text-white               { color:#0c2926 !important; }
     html.light #ss-recent [style*="rgba(255,255,255,.07)"] {
         background:rgba(255,255,255,.92) !important;
-        border-color:rgba(0,0,0,.07) !important;
-        box-shadow:0 2px 12px rgba(0,0,0,.06) !important;
+        border-color:rgba(13,148,136,.08) !important;
+        box-shadow:0 2px 12px rgba(0,0,0,.05) !important;
     }
     html.light #ss-recent [style*="rgba(255,255,255,.4"] { color:#64748b !important; }
-    html.light #ss-recent [style*="rgba(255,255,255,.1"] { border-color:rgba(0,0,0,.07) !important; }
+    html.light #ss-recent [style*="rgba(255,255,255,.1"] { border-color:rgba(13,148,136,.1) !important; }
 
     /* ══ MARQUEE DIVIDER ═══════════════════════════════════ */
     html.light .ss-page-wrap [style*="border-color:rgba(13,148,136,.15)"] {
@@ -739,15 +738,15 @@
     html.light #projects p[style*="rgba(255,255,255"]     { color:#64748b !important; }
     html.light #projects form[style*="rgba(5,15,25"] {
         background:rgba(255,255,255,.92) !important;
-        border-color:rgba(13,148,136,.3) !important;
+        border-color:rgba(13,148,136,.25) !important;
         box-shadow:0 2px 20px rgba(13,148,136,.08) !important;
     }
     html.light #projects input                            { color:#0f172a !important; background:transparent; }
     html.light #projects select                           { background:rgba(240,252,250,.9) !important; color:#0f172a !important; }
     html.light #projects [style*="rgba(255,255,255,.04)"] {
         background:rgba(255,255,255,.92) !important;
-        border-color:rgba(0,0,0,.07) !important;
-        box-shadow:0 2px 12px rgba(0,0,0,.05) !important;
+        border-color:rgba(13,148,136,.08) !important;
+        box-shadow:0 2px 12px rgba(0,0,0,.04) !important;
     }
     html.light #projects [style*="rgba(148,163,184"]      { color:#64748b !important; }
     html.light #projects time                             { color:#64748b !important; }
@@ -759,19 +758,16 @@
     html.light #ss-testimonials .rounded-2xl {
         background:rgba(255,255,255,.92) !important;
         border-color:rgba(13,148,136,.1) !important;
-        box-shadow:0 4px 24px rgba(13,148,136,.07) !important;
+        box-shadow:0 4px 24px rgba(13,148,136,.06) !important;
     }
-    /* quote mark */
     html.light #ss-testimonials [style*="rgba(45,212,191,.25)"] { color:rgba(13,148,136,.45) !important; }
-    /* quote body */
     html.light #ss-testimonials [style*="rgba(255,255,255,.65)"] { color:#475569 !important; }
-    /* role / year */
     html.light #ss-testimonials [style*="rgba(148,163,184"]      { color:#64748b !important; }
 
     /* ══ FOOTER ════════════════════════════════════════════ */
     html.light footer {
-        background:rgba(240,252,250,.99) !important;
-        border-color:rgba(13,148,136,.18) !important;
+        background:rgba(240,253,250,.99) !important;
+        border-color:rgba(13,148,136,.15) !important;
     }
     html.light footer .text-white                          { color:#0c2926 !important; }
     html.light footer [style*="rgba(255,255,255,.4"]       { color:#64748b !important; }
