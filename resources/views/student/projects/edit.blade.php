@@ -58,7 +58,8 @@
 
                 <!-- GitHub Link -->
                 <div>
-                    <label for="github_link" class="cf-label">GitHub Repository URL <span class="cf-optional">(optional)</span></label>
+                    <label for="github_link" class="cf-label">GitHub Repository URL <span
+                            class="cf-optional">(optional)</span></label>
                     <input type="url" id="github_link" name="github_link"
                         class="cf-input w-full rounded-xl px-4 py-3 text-sm font-medium mt-1.5 transition-all @error('github_link') cf-input-err @enderror"
                         value="{{ old('github_link', $project->github_link) }}"
@@ -70,7 +71,8 @@
 
                 <!-- Cover Image -->
                 <div>
-                    <label for="cover_image" class="cf-label">Cover Image <span class="cf-optional">(optional)</span></label>
+                    <label for="cover_image" class="cf-label">Cover Image <span
+                            class="cf-optional">(optional)</span></label>
                     @if ($project->cover_image)
                         <div class="mb-3">
                             <p class="text-sm cf-muted mb-2">Current Image:</p>
@@ -101,7 +103,8 @@
                             @foreach ($project->projectImages as $image)
                                 <div class="relative">
                                     <img src="{{ Storage::url($image->image_path) }}" alt="Gallery image"
-                                        class="h-24 w-full object-cover rounded-xl" style="border:1px solid rgba(255,255,255,.12);">
+                                        class="h-24 w-full object-cover rounded-xl"
+                                        style="border:1px solid rgba(255,255,255,.12);">
                                 </div>
                             @endforeach
                         </div>
@@ -110,7 +113,8 @@
 
                 <!-- Technologies -->
                 <div>
-                    <label for="technologies" class="cf-label">Technologies Used <span style="color:#f87171;">*</span></label>
+                    <label for="technologies" class="cf-label">Technologies Used <span
+                            style="color:#f87171;">*</span></label>
                     <input type="text" id="technologies" name="technologies"
                         class="cf-input w-full rounded-xl px-4 py-3 text-sm font-medium mt-1.5 transition-all @error('technologies') cf-input-err @enderror"
                         value="{{ old('technologies', implode(', ', $project->technologies ?? [])) }}" required>
@@ -158,10 +162,10 @@
 <style>
     /* ── Form card ──────────────────────────────────────────── */
     .cf-card {
-        background: rgba(255,255,255,.05);
-        border: 1px solid rgba(255,255,255,.09);
+        background: rgba(255, 255, 255, .05);
+        border: 1px solid rgba(255, 255, 255, .09);
         backdrop-filter: blur(16px);
-        box-shadow: 0 8px 40px rgba(0,0,0,.3);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, .3);
     }
 
     /* ── Labels ─────────────────────────────────────────────── */
@@ -171,65 +175,122 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.06em;
-        color: rgba(255,255,255,.7);
+        color: rgba(255, 255, 255, .7);
     }
-    .cf-optional { font-weight:500; text-transform:none; letter-spacing:normal; color:rgba(255,255,255,.35); font-size:0.7rem; }
+
+    .cf-optional {
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: normal;
+        color: rgba(255, 255, 255, .35);
+        font-size: 0.7rem;
+    }
 
     /* ── Inputs ─────────────────────────────────────────────── */
     .cf-input {
-        background: rgba(255,255,255,.06);
-        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255, 255, 255, .06);
+        border: 1px solid rgba(255, 255, 255, .12);
         color: #ffffff;
         outline: none;
     }
-    .cf-input::placeholder { color: rgba(255,255,255,.3); }
-    .cf-input:focus {
-        border-color: rgba(13,148,136,.6);
-        box-shadow: 0 0 0 3px rgba(13,148,136,.12);
-        background: rgba(255,255,255,.08);
+
+    .cf-input::placeholder {
+        color: rgba(255, 255, 255, .3);
     }
-    .cf-input-err { border-color: rgba(239,68,68,.5) !important; }
-    .cf-select { appearance: none; cursor: pointer; }
-    .cf-select option { background: #1a1a2e; color: #fff; }
+
+    .cf-input:focus {
+        border-color: rgba(13, 148, 136, .6);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, .12);
+        background: rgba(255, 255, 255, .08);
+    }
+
+    .cf-input-err {
+        border-color: rgba(239, 68, 68, .5) !important;
+    }
+
+    .cf-select {
+        appearance: none;
+        cursor: pointer;
+    }
+
+    .cf-select option {
+        background: #1a1a2e;
+        color: #fff;
+    }
 
     /* ── Typography ─────────────────────────────────────────── */
-    .cf-heading { color: #ffffff; }
-    .cf-muted   { color: rgba(148,163,184,.7); }
+    .cf-heading {
+        color: #ffffff;
+    }
+
+    .cf-muted {
+        color: rgba(148, 163, 184, .7);
+    }
 
     /* ── Ghost button ───────────────────────────────────────── */
     .cf-btn-ghost {
-        background: rgba(255,255,255,.06);
-        color: rgba(255,255,255,.65);
-        border: 1px solid rgba(255,255,255,.1);
+        background: rgba(255, 255, 255, .06);
+        color: rgba(255, 255, 255, .65);
+        border: 1px solid rgba(255, 255, 255, .1);
     }
-    .cf-btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+    .cf-btn-ghost:hover {
+        background: rgba(255, 255, 255, .1);
+        color: #fff;
+    }
 
     /* ══ LIGHT MODE ════════════════════════════════════════════ */
     html.light .cf-card {
-        background: rgba(255,255,255,.9);
-        border-color: rgba(13,148,136,.12);
-        box-shadow: 0 8px 40px rgba(13,148,136,.08);
+        background: rgba(255, 255, 255, .9);
+        border-color: rgba(13, 148, 136, .12);
+        box-shadow: 0 8px 40px rgba(13, 148, 136, .08);
     }
-    html.light .cf-label { color: #0c2926; }
-    html.light .cf-optional { color: #94a3b8; }
+
+    html.light .cf-label {
+        color: #0c2926;
+    }
+
+    html.light .cf-optional {
+        color: #94a3b8;
+    }
+
     html.light .cf-input {
-        background: rgba(255,255,255,.8);
-        border-color: rgba(13,148,136,.2);
+        background: rgba(255, 255, 255, .8);
+        border-color: rgba(13, 148, 136, .2);
         color: #0f172a;
     }
-    html.light .cf-input::placeholder { color: rgba(15,23,42,.35); }
+
+    html.light .cf-input::placeholder {
+        color: rgba(15, 23, 42, .35);
+    }
+
     html.light .cf-input:focus {
-        border-color: rgba(13,148,136,.5);
-        box-shadow: 0 0 0 3px rgba(13,148,136,.1);
+        border-color: rgba(13, 148, 136, .5);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, .1);
         background: #fff;
     }
-    html.light .cf-select option { background: #fff; color: #0f172a; }
-    html.light .cf-heading { color: #0c2926; }
-    html.light .cf-muted   { color: #64748b; }
-    html.light .cf-btn-ghost {
-        background: rgba(13,148,136,.07);
-        color: #0f766e;
-        border-color: rgba(13,148,136,.18);
+
+    html.light .cf-select option {
+        background: #fff;
+        color: #0f172a;
     }
-    html.light .cf-btn-ghost:hover { background: rgba(13,148,136,.13); color: #0d9488; }
+
+    html.light .cf-heading {
+        color: #0c2926;
+    }
+
+    html.light .cf-muted {
+        color: #64748b;
+    }
+
+    html.light .cf-btn-ghost {
+        background: rgba(13, 148, 136, .07);
+        color: #0f766e;
+        border-color: rgba(13, 148, 136, .18);
+    }
+
+    html.light .cf-btn-ghost:hover {
+        background: rgba(13, 148, 136, .13);
+        color: #0d9488;
+    }
 </style>
