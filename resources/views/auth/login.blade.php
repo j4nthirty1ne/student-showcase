@@ -3,65 +3,140 @@
 @section('title', 'Login')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 py-12">
-    <div class="bg-white shadow-md rounded-lg p-8 max-w-md mx-auto">
-        <h1 class="text-2xl font-bold mb-6 text-center">Login</h1>
+    <div class="cf-wrap min-h-screen py-12 px-6">
+        <div class="cf-card rounded-2xl p-8 max-w-md mx-auto">
+            <h1 class="text-2xl font-black mb-6 text-center cf-heading">Login</h1>
 
-        @if ($errors->any())
-            <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                <ul class="list-disc list-inside">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+            @if ($errors->any())
+                <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        <form action="{{ route('login') }}" method="POST">
-            @csrf
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
 
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    value="{{ old('email') }}"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('email') border-red-500 @enderror"
-                    required
-                    autofocus
-                >
-                @error('email')
-                    <span class="text-red-500 text-sm block mt-1">{{ $message }}</span>
-                @enderror
-            </div>
+                <div class="mb-4">
+                    <label for="email" class="cf-label">Email</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}"
+                        class="cf-input w-full rounded-xl px-4 py-3 text-sm font-medium mt-1.5 transition-all @error('email') cf-input-err @enderror"
+                        required autofocus>
+                    @error('email')
+                        <span class="text-red-500 text-sm block mt-1">{{ $message }}</span>
+                    @enderror
+                </div>
 
-            <div class="mb-6">
-                <label for="password" class="block text-gray-700 font-bold mb-2">Password</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('password') border-red-500 @enderror"
-                    required
-                >
-                @error('password')
-                    <span class="text-red-500 text-sm block mt-1">{{ $message }}</span>
-                @enderror
-            </div>
+                <div class="mb-6">
+                    <label for="password" class="cf-label">Password</label>
+                    <input type="password" id="password" name="password"
+                        class="cf-input w-full rounded-xl px-4 py-3 text-sm font-medium mt-1.5 transition-all @error('password') cf-input-err @enderror"
+                        required>
+                    @error('password')
+                        <span class="text-red-500 text-sm block mt-1">{{ $message }}</span>
+                    @enderror
+                </div>
 
-            <button 
-                type="submit"
-                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition"
-            >
-                Login
-            </button>
-        </form>
+                <button type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-black text-white transition-all hover:scale-[1.02] hover:shadow-xl"
+                    style="background:linear-gradient(135deg,#0d9488,#0f766e);box-shadow:0 8px 24px rgba(13,148,136,.35);">
+                    Login
+                </button>
+            </form>
 
-        <p class="text-center mt-6 text-gray-600">
-            Don't have an account? 
-            <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 font-bold">Register</a>
-        </p>
+            <p class="text-center mt-6 text-sm cf-muted">
+                Don't have an account?
+                <a href="{{ route('register') }}" class="font-bold" style="color:#2dd4bf;">Register</a>
+            </p>
+        </div>
     </div>
-</div>
 @endsection
+
+<style>
+    /* ── Form card ──────────────────────────────────────────── */
+    .cf-card {
+        background: rgba(255, 255, 255, .05);
+        border: 1px solid rgba(255, 255, 255, .09);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, .3);
+    }
+
+    /* ── Labels ─────────────────────────────────────────────── */
+    .cf-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: rgba(255, 255, 255, .7);
+    }
+
+    /* ── Inputs ─────────────────────────────────────────────── */
+    .cf-input {
+        background: rgba(255, 255, 255, .06);
+        border: 1px solid rgba(255, 255, 255, .12);
+        color: #ffffff;
+        outline: none;
+    }
+
+    .cf-input::placeholder {
+        color: rgba(255, 255, 255, .3);
+    }
+
+    .cf-input:focus {
+        border-color: rgba(13, 148, 136, .6);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, .12);
+        background: rgba(255, 255, 255, .08);
+    }
+
+    .cf-input-err {
+        border-color: rgba(239, 68, 68, .5) !important;
+    }
+
+    /* ── Typography ─────────────────────────────────────────── */
+    .cf-heading {
+        color: #ffffff;
+    }
+
+    .cf-muted {
+        color: rgba(148, 163, 184, .7);
+    }
+
+    /* ══ LIGHT MODE ════════════════════════════════════════════ */
+    html.light .cf-card {
+        background: rgba(255, 255, 255, .9);
+        border-color: rgba(13, 148, 136, .12);
+        box-shadow: 0 8px 40px rgba(13, 148, 136, .08);
+    }
+
+    html.light .cf-label {
+        color: #0c2926;
+    }
+
+    html.light .cf-input {
+        background: rgba(255, 255, 255, .8);
+        border-color: rgba(13, 148, 136, .2);
+        color: #0f172a;
+    }
+
+    html.light .cf-input::placeholder {
+        color: rgba(15, 23, 42, .35);
+    }
+
+    html.light .cf-input:focus {
+        border-color: rgba(13, 148, 136, .5);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, .1);
+        background: #fff;
+    }
+
+    html.light .cf-heading {
+        color: #0c2926;
+    }
+
+    html.light .cf-muted {
+        color: #64748b;
+    }
+</style>
